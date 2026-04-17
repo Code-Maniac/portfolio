@@ -1,0 +1,208 @@
+.games-switcher {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+  flex-wrap: wrap;
+}
+
+.game-switch-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  background: none;
+  border: 1px solid var(--border-md);
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: left;
+}
+.game-switch-btn:hover { border-color: var(--ink-3); }
+.game-switch-btn.active {
+  border-color: var(--accent);
+  background: var(--accent-light);
+}
+
+.gsb-engine {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+}
+.game-switch-btn.active .gsb-engine { color: var(--accent); }
+
+.gsb-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+}
+
+/* Panel */
+.game-panel {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 2rem;
+  align-items: start;
+}
+
+.game-viewport {
+  background: var(--ink);
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  position: relative;
+}
+
+/* Cover */
+.game-cover {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: linear-gradient(135deg, #1a2e1a 0%, #0d1a0d 100%);
+  transition: opacity 0.2s;
+}
+.game-cover:hover { opacity: 0.92; }
+
+.game-cover-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.game-engine-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-2);
+}
+
+.game-cover-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 300;
+  font-style: italic;
+  color: #e8f5e8;
+}
+
+.game-cover-desc {
+  font-size: 14px;
+  color: rgba(200, 240, 200, 0.6);
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.game-launch-btn { margin-top: 0.5rem; }
+
+/* iframe */
+.game-iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Placeholder after launch with no embed URL */
+.game-placeholder-launched {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1a2e1a 0%, #0d1a0d 100%);
+}
+
+.game-ph-msg {
+  font-size: 14px;
+  color: rgba(200, 240, 200, 0.6);
+  text-align: center;
+  line-height: 1.6;
+  max-width: 340px;
+}
+
+.game-ph-msg code {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent-2);
+  background: rgba(74, 140, 97, 0.15);
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+/* Meta sidebar */
+.game-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 0.5rem;
+}
+
+.game-meta-engine {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 300;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.game-meta-title {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 0.5rem;
+}
+
+.game-meta-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+
+.game-controls-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-4);
+  margin-bottom: 0.75rem;
+}
+
+.game-controls {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.game-controls li {
+  font-size: 13px;
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-weight: 300;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 860px) {
+  .game-panel { grid-template-columns: 1fr; }
+}
