@@ -9,6 +9,44 @@
   position: relative;
 }
 
+/* ── Side-by-side layout ── */
+.hero-layout {
+  display: flex;
+  align-items: center;
+  gap: 3.5rem;
+}
+
+/* ── Photos ── */
+.hero-photo-wrap {
+  flex-shrink: 0;
+}
+
+.hero-photo {
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+  border: 1px solid var(--border);
+}
+
+.hero-photo--portrait {
+  width: 240px;
+  height: 300px;
+  object-position: center top;
+}
+
+.hero-photo--action {
+  width: 240px;
+  height: 380px;
+  object-position: center 30%;
+}
+
+/* ── Text column ── */
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .hero-eyebrow {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -21,7 +59,7 @@
 
 .hero-name {
   font-family: var(--font-serif);
-  font-size: clamp(4.5rem, 12vw, 9rem);
+  font-size: clamp(3rem, 6vw, 6rem);
   font-weight: 300;
   line-height: 0.95;
   letter-spacing: -0.02em;
@@ -35,12 +73,12 @@
 
 .hero-tagline {
   font-family: var(--font-serif);
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.3rem);
   font-weight: 300;
   font-style: italic;
   color: var(--ink-2);
   line-height: 1.5;
-  max-width: 440px;
+  max-width: 380px;
   margin-bottom: 2.5rem;
 }
 
@@ -50,6 +88,7 @@
   flex-wrap: wrap;
 }
 
+/* ── Scroll hint ── */
 .hero-scroll-hint {
   position: absolute;
   bottom: 2.5rem;
@@ -83,7 +122,23 @@
   writing-mode: vertical-rl;
 }
 
-@media (max-width: 600px) {
-  .hero-section { padding: 8rem 1.25rem 4rem; }
-  .hero-scroll-hint { left: 1.25rem; }
+/* ── Responsive ── */
+@media (max-width: 1000px) {
+  .hero-photo--action {
+    width: 180px;
+    height: 280px;
+  }
+  .hero-photo--portrait {
+    width: 180px;
+    height: 225px;
+  }
+  .hero-layout { gap: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  .hero-layout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
 }
