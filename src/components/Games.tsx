@@ -1,43 +1,63 @@
-import { useState } from 'react'
-import './Games.css'
+import { useState } from "react";
+import "./Games.css";
 
 interface Game {
-  id: string
-  title: string
-  engine: string
-  desc: string
-  controls: string[]
-  embedUrl: string | null
-  itchUrl: string
+  id: string;
+  title: string;
+  engine: string;
+  desc: string;
+  controls: string[];
+  embedUrl: string | null;
+  itchUrl: string | null;
 }
 
 const GAMES: Game[] = [
   {
-    id: 'axiom',
-    title: 'Project Axiom',
-    engine: 'Godot 4',
-    desc: 'Top-down procedural shooter. Survive as long as you can in a dungeon that generates itself around you.',
-    controls: ['WASD — Move', 'Mouse — Aim', 'Left Click — Fire', 'E — Interact', 'Esc — Pause'],
-    embedUrl: null, // Replace with your Godot web export URL
-    itchUrl: 'https://itch.io',
+    id: "harvest-shroom",
+    title: "Harvest Shroom",
+    engine: "Godot 3",
+    desc: "Made for Ludum Dare 52. Top down puzzle game where the player eats mushrooms that both poison and cure",
+    controls: ["WASD — Move"],
+    embedUrl: "/games/harvest-shroom/index.html", // Replace with your Godot web export URL
+    itchUrl: "https://achilnos.itch.io/harvestshroom",
   },
   {
-    id: 'gravity',
-    title: 'Gravity Well',
-    engine: 'Unity',
-    desc: 'Physics-based puzzle game. Create and manipulate gravity wells to guide objects to their targets.',
-    controls: ['Click — Place gravity well', 'Scroll — Adjust strength', 'Right Click — Remove well', 'R — Reset level'],
+    id: "bert-the-introvert",
+    title: "Bert the Introvert",
+    engine: "Unity",
+    desc: "Made for Ludum Dare 54. Top down game where the player, avoids his family while completing set tasks, the player loses if they fail to complete the tasks",
+    controls: [
+      "Click — Place gravity well",
+      "Scroll — Adjust strength",
+      "Right Click — Remove well",
+      "R — Reset level",
+    ],
     embedUrl: null, // Replace with your Unity WebGL build URL
-    itchUrl: 'https://itch.io',
+    itchUrl: null,
   },
-]
+  {
+    id: "tetris",
+    title: "Tetris",
+    engine: "Godot 4",
+    desc: "Made for fun. A clone of Tetris, made to be a close copy of Tetris on the NES with a couple of extra feature",
+    controls: [
+      "Arrow Keys - Move",
+      "Z - CW Rotate",
+      "X - CCW Rotate",
+      "C - Slam current tetris piece",
+      "Enter - Pause/Continue",
+    ],
+    embedUrl: "games/tetris/Tetris.html",
+    itchUrl: null,
+  },
+];
 
 interface GamePanelProps {
-  game: Game
+  game: Game;
 }
 
 function GamePanel({ game }: GamePanelProps) {
-  const [launched, setLaunched] = useState(false)
+  const [launched, setLaunched] = useState(false);
 
   return (
     <div className="game-panel">
@@ -62,16 +82,9 @@ function GamePanel({ game }: GamePanelProps) {
         ) : (
           <div className="game-placeholder-launched">
             <p className="game-ph-msg">
-              No embed URL set — add your hosted WebGL build URL to <code>Games.tsx</code>.
+              No embed URL set — add your hosted WebGL build URL to{" "}
+              <code>Games.tsx</code>.
             </p>
-            <a
-              href={game.itchUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn"
-            >
-              View on itch.io ↗
-            </a>
           </div>
         )}
       </div>
@@ -90,34 +103,38 @@ function GamePanel({ game }: GamePanelProps) {
             ))}
           </ul>
         </div>
-        <a
-          href={game.itchUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn"
-        >
-          View on itch.io ↗
-        </a>
+        {game.itchUrl && (
+          <a
+            href={game.itchUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn"
+          >
+            View on itch.io ↗
+          </a>
+        )}
       </div>
     </div>
-  )
+  );
 }
 
 export default function Games() {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(0);
 
   return (
     <section id="games">
       <div className="eyebrow">Playable Games</div>
       <h2 className="section-heading">
-        Built to play.<br /><em>Right here.</em>
+        Built to play.
+        <br />
+        <em>Right here.</em>
       </h2>
 
       <div className="games-switcher">
         {GAMES.map((game, i) => (
           <button
             key={game.id}
-            className={`game-switch-btn${active === i ? ' active' : ''}`}
+            className={`game-switch-btn${active === i ? " active" : ""}`}
             onClick={() => setActive(i)}
           >
             <span className="gsb-engine">{game.engine}</span>
@@ -128,5 +145,5 @@ export default function Games() {
 
       <GamePanel key={active} game={GAMES[active]} />
     </section>
-  )
+  );
 }
