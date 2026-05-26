@@ -8,6 +8,7 @@ interface ExperienceEntry {
   company: string;
   period: string;
   desc: string;
+  keyPoints: string[];
   tags: string[];
 }
 
@@ -25,25 +26,61 @@ interface SkillBar {
 
 const EXPERIENCE: ExperienceEntry[] = [
   {
-    role: "Senior Embedded Systems Engineer",
-    company: "Your Company",
-    period: "2022 — Present",
-    desc: "Lead firmware development for ARM Cortex-M based products. Designed RTOS-based software architectures, peripheral drivers (CAN, SPI, I2C), and bootloader systems. Managed PCB bring-up and hardware/software integration.",
-    tags: ["C/C++", "ARM Cortex-M", "FreeRTOS", "CAN", "SPI"],
+    role: "Software Engineer",
+    company: "Evinox Ltd",
+    period: "06/2023 — 03/2026",
+    desc: "Full-stack embedded and backend development in the energy and utilities sector, working across communal heating systems from microcontroller firmware to server infrastructure.",
+    keyPoints: [
+      "Programming and maintenance of communal heating systems in Rust and C on Linux displays and Silabs EFM-8 8051 microcontrollers",
+      "Development of new products in C++ on STM32 microcontrollers",
+      "Board bring-up for new electronics products",
+      "Development of automated testing software for custom electronics boards delivered by manufacturer",
+      "Development of server backend handling payments for heating, diagnostics data gathering, and heat network efficiency calculations",
+      "Diagnostics of software and hardware problems on installed products",
+    ],
+    tags: ["Rust", "C", "C++", "C#", "STM32", "EFM-8", "Linux", "Embedded"],
   },
   {
-    role: "Embedded Software Engineer",
-    company: "Previous Company",
-    period: "2019 — 2022",
-    desc: "Developed and maintained firmware for industrial control systems. Built communication stacks and HAL layers for multiple MCU families. Worked closely with hardware teams on bring-up and compliance.",
-    tags: ["C", "STM32", "I2C", "UART", "CMake"],
+    role: "Software Engineer",
+    company: "Veethree",
+    period: "06/2020 — 06/2023",
+    desc: "Embedded Linux development with a focus on CAN interfaces, proprietary SDK development, and cross-platform build systems.",
+    keyPoints: [
+      "Programming and maintenance of software across a range of embedded Linux systems with a focus on CAN interfaces",
+      "Development and maintenance of proprietary SDKs in C and C++, with CMake build configuration for multiple embedded Linux targets",
+      "Design and creation of a new SDK replacing a proprietary frontend with Qt QML",
+      "Creation and maintenance of platform-independent Linux distributions using Yocto Project",
+      "Code review and customer liaison, including writing quotes based on technical specifications",
+    ],
+    tags: ["C", "C++", "CMake", "Qt QML", "Yocto", "CAN", "Embedded Linux"],
   },
   {
-    role: "Junior Firmware Developer",
-    company: "First Role",
-    period: "2017 — 2019",
-    desc: "Implemented power management routines, OTA update mechanisms, and low-level peripheral drivers for consumer electronics firmware.",
-    tags: ["C", "Microchip PIC", "UART", "RTOS"],
+    role: "Software Engineer",
+    company: "James Fisher Prolec",
+    period: "03/2018 — 01/2020",
+    desc: "Development and maintenance of safety-critical embedded systems, with additional responsibilities across testing, documentation, and customer support.",
+    keyPoints: [
+      "Programming and maintenance of safety-critical embedded systems in MISRA C++",
+      "GUI test automation using Python and Squish",
+      "Code review",
+      "Technical support for professional customers and remote support for service engineers",
+      "Authoring specification and manual documents",
+    ],
+    tags: ["MISRA C++", "Python", "Squish", "Safety-Critical", "Embedded"],
+  },
+  {
+    role: "Software Developer",
+    company: "Mapyx",
+    period: "10/2013 — 01/2017",
+    desc: "Full-stack development of GIS, tracking, and fleet management software for the transport sector.",
+    keyPoints: [
+      "Programming and maintenance of GIS, tracking, and management software in C# and VB.NET",
+      "GIS map image processing and maintenance of map processing software",
+      "Development and maintenance of data push services in C# and SQL to receive data from third-party providers",
+      "Configuration of tracking software for clients and technical support for personal and professional customers",
+      "Authoring specification and manual documents",
+    ],
+    tags: ["C#", "VB.NET", "SQL", "GIS", "Tracking"],
   },
 ];
 
@@ -69,14 +106,15 @@ const EDUCATION: EducationEntry[] = [
 ];
 
 const SKILL_BARS: SkillBar[] = [
-  { label: "Embedded C / C++", level: 95 },
+  { label: "C / C++", level: 95 },
   { label: "Rust", level: 92 },
-  { label: "ARM / RTOS Firmware", level: 85 },
-  { label: "Embedded Linux", level: 80 },
-  { label: "Python & Scripting", level: 72 },
-  { label: "React / TypeScript", level: 65 },
-  { label: "Godot / GDScript", level: 60 },
-  { label: "Unity / C#", level: 55 },
+  { label: "Embedded Linux", level: 90 },
+  { label: "C# / .NET", level: 85 },
+  { label: "CMake / Build Systems", level: 80 },
+  { label: "Python", level: 70 },
+  { label: "React / TypeScript", level: 50 },
+  { label: "Godot / GDScript", level: 45 },
+  { label: "Unity / C#", level: 40 },
 ];
 
 function SkillBarRow({ label, level }: SkillBar) {
@@ -132,6 +170,11 @@ export default function CV() {
                 <h3 className="cv-role">{exp.role}</h3>
                 <p className="cv-company">{exp.company}</p>
                 <p className="cv-desc">{exp.desc}</p>
+                <ul className="cv-key-points">
+                  {exp.keyPoints.map((keyPoint) => (
+                    <li key={keyPoint}>{keyPoint}</li>
+                  ))}
+                </ul>
                 <div className="cv-tags">
                   {exp.tags.map((tag) => (
                     <span key={tag} className="tag">

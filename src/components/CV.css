@@ -88,6 +88,29 @@
   margin-bottom: 1rem;
 }
 
+.cv-key-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.cv-key-points li {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  padding-left: 1rem;
+  position: relative;
+}
+
+.cv-key-points li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
 .cv-tags {
   display: flex;
   flex-wrap: wrap;

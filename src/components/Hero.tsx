@@ -39,7 +39,7 @@ export default function Hero() {
 
           <div className="hero-photo-wrap">
             <img
-              src="/climbing.jpg"
+              src="/climbing.jpeg"
               alt="Nick Jaycock rock climbing"
               className="hero-photo hero-photo--action"
             />
