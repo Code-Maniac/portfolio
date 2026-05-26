@@ -9,18 +9,18 @@ interface Hobby {
 const HOBBIES: Hobby[] = [
   {
     title: "Rock climbing",
-    body: "Climbing is where problem-solving meets physicality. Whether it's working a technical boulder problem or committing to a long trad route, the focus it demands is unlike anything else. I'm drawn to the same things in climbing that I am in engineering — reading a system, finding the efficient solution, and trusting your gear.",
-    tags: ["Bouldering", "Sport", "Trad", "Outdoors"],
-  },
-  {
-    title: "Electronics & tinkering",
-    body: "Outside of work I still find myself pulling apart hardware just to see how it works. Personal projects range from custom mechanical keyboards to home automation built on bare microcontrollers — no cloud required.",
-    tags: ["Electronics", "DIY", "Microcontrollers"],
+    body: "Climbing is where problem-solving meets raw physicality and adventure. Every route is a puzzle — reading the wall, finding the sequence, committing to moves that demand total focus. From technical sport climbing to deep water soloing above open ocean, the consequences are real and the reward is proportional. There is nothing quite like pulling through a crux high above the water, or topping out a route that has taken weeks to crack.",
+    tags: ["Bouldering", "Sport", "Trad", "Deep Water Soloing", "Outdoors"],
   },
   {
     title: "Game jams",
-    body: "Participating in 48-hour game jams is one of the best ways I've found to sharpen creative instincts under pressure. The constraint forces decisions that polished projects never demand.",
-    tags: ["Godot", "Unity", "Game Design"],
+    body: "Game development is as much a creative outlet as it is a technical one. Participating in 48-hour game jams forces quick decisions in development of an idea that work projects don't really demand, with the end result being unknowable in it's quality and stability until the 48 hours comes to an end. Game development scratches an artistic itch for me in a setting where I can combine visual design with code and gameplay. Art, design, code, and feel all have to come together under real time pressure.",
+    tags: ["Godot", "Unity", "Game Design", "Game Jams"],
+  },
+  {
+    title: "Miniature painting",
+    body: "Miniature painting scratches the same itch as game development but with the more physical medium of paint on a model. Where code and game design demand constant problem-solving and decision-making, painting offers relaxation and an end result of little importance so long as the process was enjoyable.",
+    tags: ["Warhammer", "Painting", "Hobby"],
   },
 ];
 
@@ -37,7 +37,7 @@ export default function Hobbies() {
       <div className="hobbies-grid">
         <div className="hobbies-feature">
           <img
-            src="/climbing.jpg"
+            src="/climbing2.jpg"
             alt="Nick Jaycock rock climbing"
             className="hobbies-feature-img"
           />

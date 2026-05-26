@@ -1,6 +1,10 @@
 import "./Projects.css";
 
-type ProjectStatus = "Released" | "In Development" | "Live";
+type ProjectStatus =
+  | "Released"
+  | "In Development"
+  | "Ongoing Development"
+  | "Live";
 
 interface Project {
   num: string;
@@ -14,63 +18,92 @@ interface Project {
 
 const PROJECTS: Project[] = [
   {
-    num: "00",
-    title: "TODO",
-    category: "TODO",
-    desc: "ADD YOUR ACTUAL PROJECTS HERE TO REPLACE THESE PLACE HOLDERS",
-    tags: [],
-    link: "",
-    status: "In Development",
+    num: "01",
+    title: "NetCAN",
+    category: "Embedded Systems Development Tools",
+    desc: "A development tool designed to provide an alternative to Linux VCAN, but on Windows and MacOS using named pipes, with plans to add functionality for using UDPSockets for development over network.",
+    tags: ["Rust", "CAN", "Windows", "MacOS"],
+    link: "https://github.com/code-maniac/netcan",
+    status: "Ongoing Development",
   },
   {
     num: "01",
-    title: "Bare-Metal RTOS",
+    title: "J1939",
     category: "Embedded Systems",
-    desc: "A minimal real-time operating system written from scratch for ARM Cortex-M4. Preemptive scheduler, mutex/semaphore primitives, and a memory pool allocator. No external dependencies — pure C.",
-    tags: ["C", "ARM Cortex-M4", "RTOS", "Scheduler"],
-    link: "https://github.com/nickjaycock",
-    status: "Released",
+    desc: "A J1939 CAN stack written in Rust, including integration into NetCAN project. There are plans to add logging tools to this project, alongside auto processing/reply of messages based on configuration files.",
+    tags: ["Rust", "CAN"],
+    link: "https://github.com/code-maniac/j1939",
+    status: "Ongoing Development",
   },
   {
     num: "02",
-    title: "CAN Bus Logger",
-    category: "Embedded Systems",
-    desc: "Automotive diagnostic data logger and decoder for CAN bus traffic. Runs on STM32 hardware with a serial interface and a Python companion tool for log analysis and visualisation.",
-    tags: ["C", "STM32", "CAN Bus", "Python"],
-    link: "https://github.com/nickjaycock",
+    title: "CHIP-8",
+    category: "Emulation",
+    desc: "A CHIP8 emulator written in Rust, which served as my first project in Rust when I was just learning it",
+    tags: ["Rust", "Emulation"],
+    link: "https://github.com/code-maniac/chip8",
     status: "Released",
   },
   {
     num: "03",
-    title: "Project Axiom",
-    category: "Game — Godot 4",
-    desc: "A top-down shooter exploring procedural dungeon generation and emergent AI behaviour. Built in Godot 4 with a focus on performance, clean scene architecture, and satisfying game feel.",
-    tags: ["Godot 4", "GDScript", "Procedural Gen", "2D"],
-    link: "https://github.com/nickjaycock",
-    status: "In Development",
+    title: "Harvest Shroom",
+    category: "Game - Godot 3",
+    desc: "A game about eating mushrooms, made for Ludum Dare 52. This game is available to play below",
+    tags: ["Godot", "GDScript", "Puzzle", "2D"],
+    link: "https://github.com/code-maniac/harvest-shroom",
+    status: "Released",
   },
   {
     num: "04",
-    title: "Gravity Well",
-    category: "Game — Unity",
-    desc: "A physics-based puzzle game in Unity where players manipulate gravitational fields to guide objects through increasingly complex levels. Emphasis on emergent mechanics from simple rules.",
-    tags: ["Unity", "C#", "Physics", "Puzzle"],
-    link: "https://github.com/nickjaycock",
-    status: "In Development",
+    title: "Bert the Introvert",
+    category: "Game - Unity",
+    desc: "A game about avoidance, made for Ludum Dare 54. This game is available to play below",
+    tags: ["Unity", "C#", "2D"],
+    link: "https://github.com/code-maniac/bert-the-introvert",
+    status: "Released",
   },
   {
     num: "05",
+    title: "Tetris",
+    category: "Game - Godot 4",
+    desc: "A clone of Tetris on the NES. This game is available to play below, although could still use some polish",
+    tags: ["Godot", "GDScript", "2D", "Classic Gaming"],
+    link: "https://github.com/code-maniac/tetris",
+    status: "Released",
+  },
+  {
+    num: "06",
     title: "This Portfolio",
     category: "Web",
     desc: "Built with React and Vite. Scroll-driven background image transitions, clean minimal design, and a focus on letting the work speak for itself.",
     tags: ["React", "TypeScript", "Vite", "CSS"],
-    link: "https://github.com/nickjaycock",
+    link: "https://github.com/code-maniac/portfolio",
     status: "Live",
+  },
+  {
+    num: "07",
+    title: "Dotbot Omnipackage",
+    category: "Plugin",
+    desc: "A plugin for Dotbot, written in Python, to support pulling of packages from multiple different linux package managers, depending on linux distro. Used to aid auto setup of newly a newly installed Linux distro.",
+    tags: ["Python", "Linux"],
+    link: "https://github.com/code-maniac/dotbot-omnipkg",
+    status: "Live",
+  },
+  {
+    num: "08",
+    title: "Godot Blendtree Wizard",
+    category: "Addon",
+    desc: "A Godot 4 addon for automatic creation of animation tree blend spaces based on animations in an Animation Player. Originally created to aid my own workflow in a currently ongoing project that is not listed here, and autogenerates animation trees for characters that would otherwise take in the tens of hours. I now plan to fully release this on the godot asset store as a free plugin at a later date.",
+    tags: ["GDScript", "Addon", "Workflow Aid"],
+    link: "https://github.com/code-maniac/godot-blendtree-wizard",
+    status: "In Development",
   },
 ];
 
 function statusClass(status: ProjectStatus): string {
-  return status === "In Development" ? "status-dev" : "status-live";
+  return ["In Development", "Ongoing Development"].includes(status)
+    ? "status-dev"
+    : "status-live";
 }
 
 export default function Projects() {

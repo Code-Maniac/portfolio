@@ -7,7 +7,7 @@ export default function Hero() {
         <div className="hero-layout fade-up">
           <div className="hero-photo-wrap">
             <img
-              src="/headshot.jpg"
+              src="/Headshot.jpg"
               alt="Nick Jaycock"
               className="hero-photo hero-photo--portrait"
             />
